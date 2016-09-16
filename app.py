@@ -17,3 +17,4 @@ app.register_blueprint(controllers.main)
 if __name__ == '__main__':
     # listen on external IPs
     app.run(host=config.env['host'], port=config.env['port'], debug=True)
+    #app.run(host='0.0.0.0', port=3000, debug=True)

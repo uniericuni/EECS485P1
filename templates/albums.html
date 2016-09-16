@@ -2,9 +2,49 @@
 {% block content %}
     <h1>ALBUMS</h1>
     <p class="important">
-      Welcome!
+      Welcome! {{name}}
     </p>
-    {% if edit %}
-        <div> This is only on the edit page </div>
-    {% endif %}
+	<p>{{ albums|length }} albums are found.</p>
+	{% if edit %}
+		<form action="Script URL" method="POST">
+		<table>
+		<tr>
+			<td>Album</td>
+			<td>Edit</td>
+			<td>Delete</td>
+		</tr>
+		{% for album in albums %}
+			<tr>
+			<td><a id="album_{{album.albumid}}_link" href="{{ url_for('album.album_route',albumid=album.albumid) }}">go to album: {{album.title}}</a></td>
+			<td>[Edit]</td>
+			<td><input type="submit" id="delete_album_{{album.albumid}}" value="Delete"></td>
+		  </tr>
+		{% endfor %}
+		<tr>
+		<td>New: <input type="text" id="album_add_name" name="newAlbumText"></td>
+		<td><input type="submit" id="album_add_submit" value="Add"></td>
+		<td></td>
+		</tr>
+		</table>
+		</form>	
+	{% else %}
+	<table>
+		<tr>
+			<td>Album</td>
+		</tr>
+		{% for album in albums %}
+			<tr>
+			<td><a id="album_{{album.albumid}}_link" href="{{ url_for('album.album_route',albumid=album.albumid) }}">go to album: {{album.title}}</a></td>
+		  </tr>
+		{% endfor %}	
+	</table>
+	{% endif %}
+	
+	
+	<p><a id="user_albums_edit_{{username}}" href="{{ url_for('albums.albums_edit_route',username=username) }}">edit albums</a></p>
+			
+    
+
+	
+	
 {% endblock %}
