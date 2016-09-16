@@ -15,8 +15,10 @@ Example Project Below README.md:
 ### Extra:
   - We called our `/pic` endpoint `/foto` (which you shouldn't but note any other special instructions here)
 
+------
+
 # Commands
----
+
 In the following content, we provied simple commands for you to create, delete tables and load data into the created tables. Noticing that all the tables and content are assigned in `tbl_create.sql` and `load_data.sql`. Plus, `load_data.sql` is generated via `generate_load_data.py`. You have to modify them in order to get customized dataset.
 
 - Create the given set of tables in your database
