@@ -9,7 +9,15 @@ def connect_to_database():
     'passwd': config.env['password'],
     'db': config.env['db'],
     'cursorclass' : MySQLdb.cursors.DictCursor
+	
+	#'host': 'localhost',
+    #'user': 'root',
+    #'passwd': 'root',
+    #'db': '485p1_db',
+    #'cursorclass' : MySQLdb.cursors.DictCursor
+	
   }
   db = MySQLdb.connect(**options)
   db.autocommit(True)
   return db
+

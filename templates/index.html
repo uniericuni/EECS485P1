@@ -1,7 +1,32 @@
+<!doctype html>
+<html>
+
+<head>
+<title>Album Index</title>
+</head>
+
+<body>
+
+
 {% extends "base.html" %}
+
 {% block content %}
     <h1>INDEX</h1>
     <p class="center">
-      Welcome!
+      Welcome!! {{ name }}
     </p>
+
+
+<div>{{ users|length }} users are found.</div>
+<p><a id="user_albums_{{name}}" href="{{ url_for('albums.albums_route',username=name) }}">go to albums for {{name}}</a></p>
+{% for user in users%}
+<p><a id="user_albums_{{user.username}}" href="{{ url_for('albums.albums_route',username=user.username) }}">go to albums for {{user.username}}</a></p>
+{% endfor %}
+
 {% endblock %}
+
+</body>
+
+</html>
+
+
