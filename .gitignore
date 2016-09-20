@@ -5,3 +5,4 @@ static/images/*
 *.doc
 config.py
 *.zip
+*.DS_Store
