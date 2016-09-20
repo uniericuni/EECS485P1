@@ -27,7 +27,8 @@ albumId += 1
 # check files
 seqNum = 0
 htable = hashlib.md5()
-for file in os.listdir("./..//static/images/"):
+directory = "./../static/images"
+for file in os.listdir(directory):
     if file.startswith('.'):
         continue
         
@@ -47,6 +48,9 @@ for file in os.listdir("./..//static/images/"):
     htable.update(str(albumId))
     htable.update(fname)
     picid = htable.hexdigest()
+    oName = os.path.join(directory, file)
+    nName = os.path.join(directory, picid+'.'+fformat)
+    os.rename(oName, nName)
         
     output += ("""insert into photo values('""" + fformat + """', '""" + str(picid) + """', CURRENT_TIMESTAMP);\n""")
     output += ('insert into contain values(' + str(seqNum) + ', ' + str(albumId) + """, '""" + str(picid) + """', '');\n""")

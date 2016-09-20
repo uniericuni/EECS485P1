@@ -33,5 +33,5 @@ In the following content, we provied simple commands for you to create, delete t
 
 - Load the given set of information into our given tables
 ```
-> mysql -u usr_name db_name -p < load_dataa.sql
+> mysql -u usr_name db_name -p < load_data.sql
 ```

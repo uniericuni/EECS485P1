@@ -1,6 +1,7 @@
 venv/
-static/images
+static/images/*
 *.pyc
 *.doxc
 *.doc
 config.py
+*.zip
