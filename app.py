@@ -5,6 +5,7 @@ import config
 
 # Initialize Flask app with the template folder address
 app = Flask(__name__, template_folder='templates')
+app.secret_key=config.secret_key
 
 # Register the controllers
 app.register_blueprint(controllers.album)

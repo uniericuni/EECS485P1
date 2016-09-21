@@ -13,12 +13,11 @@
 {% block content %}
     <h1>INDEX</h1>
     <p class="center">
-      Welcome!! {{ name }}
+      Welcome!!
     </p>
 
 
-<div>{{ users|length }} users are found.</div>
-<p><a id="user_albums_{{name}}" href="{{ url_for('albums.albums_route',username=name) }}">go to albums for {{name}}</a></p>
+<div>Found {{ users|length }} user(s).</div>
 {% for user in users%}
 <p><a id="user_albums_{{user.username}}" href="{{ url_for('albums.albums_route',username=user.username) }}">go to albums for {{user.username}}</a></p>
 {% endfor %}

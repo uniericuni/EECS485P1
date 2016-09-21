@@ -10,7 +10,7 @@ create table user(
 );
 
 create table album(
-	albumid BIGINT unsigned NOT NULL,
+	albumid BIGINT unsigned NOT NULL AUTO_INCREMENT,
 	title varchar(50) NOT NULL,
 	created TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
 	lastupdated TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,

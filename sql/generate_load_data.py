@@ -12,16 +12,16 @@ output += """insert into user values('spacejunkie', 'Bob', 'Spacey', 'bob1pass',
 albumDict = {}
 albumId = 1
 albumDict['I love sports'] = albumId
-output+= ('insert into album values(' + str(albumId) + """, 'I love sports', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'sportslover');\n""")
+output+= ('insert into album values(NULL'+ """, 'I love sports', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'sportslover');\n""")
 albumId += 1
 albumDict['I love football'] = albumId
-output+= ('insert into album values(' + str(albumId) + """, 'I love football', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'sportslover');\n""")
+output+= ('insert into album values(NULL' + """, 'I love football', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'sportslover');\n""")
 albumId += 1
 albumDict['Around The World'] = albumId
-output+= ('insert into album values(' + str(albumId) + """, 'Around The World', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'traveler');\n""")
+output+= ('insert into album values(NULL' + """, 'Around The World', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'traveler');\n""")
 albumId += 1
 albumDict['Cool Space Shots'] = albumId
-output+= ('insert into album values(' + str(albumId) + """, 'Cool Space Shots', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'spacejunkie');\n""")
+output+= ('insert into album values(NULL' + """, 'Cool Space Shots', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'spacejunkie');\n""")
 albumId += 1
 
 # check files

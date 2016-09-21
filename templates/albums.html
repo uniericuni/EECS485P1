@@ -2,39 +2,55 @@
 {% block content %}
     <h1>ALBUMS</h1>
     <p class="important">
-      Welcome! {{name}}
+      Welcome! {{username}}
     </p>
-	<p>{{ albums|length }} albums are found.</p>
+	<p>found {{ albums|length }} album(s).</p>
 	{% if edit %}
-		<form action="Script URL" method="POST">
+		
 		<table>
 		<tr>
 			<td>Album</td>
+			<td>Created At</td>
+			<td>Last updated</td>
 			<td>Edit</td>
 			<td>Delete</td>
 		</tr>
 		{% for album in albums %}
+			<form action="{{url_for('albums.albums_edit_route')}}" method="POST">
 			<tr>
 			<td><a id="album_{{album.albumid}}_link" href="{{ url_for('album.album_route',albumid=album.albumid) }}">go to album: {{album.title}}</a></td>
-			<td>[Edit]</td>
-			<td><input type="submit" id="delete_album_{{album.albumid}}" value="Delete"></td>
+			<td>{{album.created}}</td>
+			<td>{{album.lastupdated}}</td>
+			<td><a href="{{url_for('album.album_edit_route',albumid=album.albumid)}}">edit</a></td>
+			<td><input type="submit" id="delete_album_{{album.albumid}}" name="op" value="delete"></td>
+			<input type="hidden" name="albumid" value="{{album.albumid}}">
+			<input type="hidden" name="username" value="{{username}}">
 		  </tr>
+		  </form>	
 		{% endfor %}
-		<tr>
-		<td>New: <input type="text" id="album_add_name" name="newAlbumText"></td>
-		<td><input type="submit" id="album_add_submit" value="Add"></td>
-		<td></td>
-		</tr>
+		<form action="{{url_for('albums.albums_edit_route')}}" method="POST">
+			<input type="hidden" name="username" value="{{username}}">
+			<tr>
+				<td>New: <input type="text" id="album_add_name" name="title"></td>
+				<td><input type="submit" id="album_add_submit" name="op" value="add"></td>
+				<td></td>
+			</tr>
+		</form>
+		
 		</table>
-		</form>	
+		
 	{% else %}
 	<table>
 		<tr>
 			<td>Album</td>
+			<td>Created At</td>
+			<td>Last updated</td>
 		</tr>
 		{% for album in albums %}
 			<tr>
 			<td><a id="album_{{album.albumid}}_link" href="{{ url_for('album.album_route',albumid=album.albumid) }}">go to album: {{album.title}}</a></td>
+			<td>{{album.created}}</td>
+			<td>{{album.lastupdated}}</td>
 		  </tr>
 		{% endfor %}	
 	</table>

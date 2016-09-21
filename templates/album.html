@@ -5,6 +5,25 @@
       Welcome!
     </p>
     {% if edit %}
-        <div> This is only on the edit page </div>
+	
+		
+		Below are the list of pictures in this album
+		{% for picture in pictures%}
+			<form action="{{url_for('album.album_edit_route')}}" method="POST">
+			<input type="hidden" name="albumid" value="{{albumid}}">
+			<input type="hidden" name="picid" value="{{picture.picid}}">
+			<p>{{picture.picid}}.{{picture.format}} <input type="submit" id="delete_pic_{{picture.picid}}" name="op" value="delete"></p>
+			</form>
+		{% endfor %}
+		<form action="{{url_for('album.album_edit_route')}}" enctype='multipart/form-data' method="POST">
+		<input type="hidden" name="albumid" value="{{albumid}}">
+		<input type="file" name="file" id="file_input">
+		<input type="submit" id="file_submit" name="op" value="add">
+		</form>
+	{% else %}
+	Below are the list of pictures in this album
+		{% for picture in pictures%}
+			<p>{{picture.picid}}.{{picture.format}}</p>
+		{% endfor %}	
     {% endif %}
 {% endblock %}

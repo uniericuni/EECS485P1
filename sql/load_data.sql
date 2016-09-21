@@ -1,10 +1,10 @@
 insert into user values('sportslover', 'Paul', 'Walker', 'paulpass93', 'sportslover@hotmail.com');
 insert into user values('traveler', 'Rebecca', 'Travolta', 'rebeccapass15', 'rebt@explore.org');
 insert into user values('spacejunkie', 'Bob', 'Spacey', 'bob1pass', 'bspace@spacejunkies.net');
-insert into album values(1, 'I love sports', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'sportslover');
-insert into album values(2, 'I love football', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'sportslover');
-insert into album values(3, 'Around The World', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'traveler');
-insert into album values(4, 'Cool Space Shots', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'spacejunkie');
+insert into album values(NULL, 'I love sports', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'sportslover');
+insert into album values(NULL, 'I love football', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'sportslover');
+insert into album values(NULL, 'Around The World', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'traveler');
+insert into album values(NULL, 'Cool Space Shots', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'spacejunkie');
 insert into photo values('jpg', '782b3fc76159924d951a7629c742eda7', CURRENT_TIMESTAMP);
 insert into contain values(0, 2, '782b3fc76159924d951a7629c742eda7', '');
 insert into photo values('jpg', 'e593c5dcf26851a4dcda405c24e56ac6', CURRENT_TIMESTAMP);
