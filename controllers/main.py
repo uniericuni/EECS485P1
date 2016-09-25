@@ -1,6 +1,6 @@
 from flask import *
 import extensions
-main = Blueprint('main', __name__, template_folder='templates')
+main = Blueprint('main', __name__, template_folder='templates',url_prefix='/24b8g606/p1')
 
 #initialize database
 db=extensions.connect_to_database()

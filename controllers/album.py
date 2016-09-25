@@ -8,7 +8,7 @@ from werkzeug.utils import secure_filename
 ALLOWED_EXTENSIONS = set([ 'png', 'jpg', 'bmp', 'gif','PNG', 'JPG', 'BMP', 'GIF'])
 IMAGE_FOLDER='static/images/'
 
-album = Blueprint('album', __name__, template_folder='templates')
+album = Blueprint('album', __name__, template_folder='templates',url_prefix='/24b8g606/p1')
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS

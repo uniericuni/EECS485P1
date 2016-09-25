@@ -3,7 +3,7 @@ from flask import *
 from main import db
 import os
 
-albums = Blueprint('albums', __name__, template_folder='templates')
+albums = Blueprint('albums', __name__, template_folder='templates',url_prefix='/24b8g606/p1')
 
 @albums.route('/albums/edit',methods=['GET','POST'])
 def albums_edit_route():
