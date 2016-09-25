@@ -1,19 +1,14 @@
-------
+### Group Name: (QHY)
 
-Example Project Below README.md:
-
-------
-
-### Group Name: groupXX
+### Group Number: group99
 
 ### Members:
-  - Prateek Sachdeva (prateeks): setup the database, setup the routes, did the project alone
+  - Eric Hsin (erhsin): create tables, load data into tables
+  - Yun-Tzu Chang (ytchang): index, view album list, view album, edit album list, edit album
+  - Grace Wu (hygwu): viewing albums and pictures, deploy
 
 ### Live Access:
-  - [URL For Running Version](http://google.com)
-
-### Extra:
-  - We called our `/pic` endpoint `/foto` (which you shouldn't but note any other special instructions here)
+  - http://class6.eecs.umich.edu:6450/24b8g606/p1/
 
 ------
 

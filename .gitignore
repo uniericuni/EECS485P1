@@ -10,3 +10,4 @@ deploy.sh
 static/images_backup/*
 access.log
 error.log
+sanity_test.py

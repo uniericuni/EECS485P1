@@ -19,7 +19,7 @@ class P1_Sanity_Tests(unittest.TestCase):
         # self.base_url = group_urls.URLS[os.environ['usernames']]
         
         # This line should be used locally
-        self.base_url = "http://YOURSERVER.eecs.umich.edu:YOUR PORT/"
+        self.base_url = "http://localhost:3000/24b8g606/p1/"
         
         self.url = self.base_url
 
