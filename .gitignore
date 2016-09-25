@@ -6,3 +6,5 @@ static/images/*
 config.py
 *.zip
 *.DS_Store
+deploy.sh
+static/images_backup/*
