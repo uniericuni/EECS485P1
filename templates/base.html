@@ -1,16 +1,33 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html lang="en">
 <head>
-
+	{% block head %}
     <link rel="stylesheet" href="/static/css/style.css" />
-
-    <title>EECS485</title>
+	<script type="text/javascript" src="/static/js/main.js"></script>
+    <title>EECS485-{% block title %}{% endblock %}</title>
+	
+	<meta charset="UTF-8">
+	<meta name="description" content="485P1">
+	<meta name="author" content="QHT">
+	
+	{% endblock %}
 </head>
 <body>
+	<header id="header">
+      {% block header %}
+       <h2>This is the header</h2>
+      {% endblock %}	
+	</header>
+
   <div class="center">
     {% block content %}{% endblock %}
   </div>
-  <script type="text/javascript" src="/static/js/main.js"></script>
+    <div id="footer">
+      {% block footer %}
+      &copy; Copyright 2010 by QHT</a>.
+      {% endblock %}
+    </div>
+
 </body>
 
 </html>
