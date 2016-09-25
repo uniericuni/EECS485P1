@@ -8,3 +8,5 @@ config.py
 *.DS_Store
 deploy.sh
 static/images_backup/*
+access.log
+error.log
