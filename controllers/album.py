@@ -23,10 +23,12 @@ def album_edit_route():
 	cur = db.cursor()
 	if request.method == 'GET':
 		albumid=request.args['albumid']	
-		cur.execute("SELECT photo.picid, photo.format FROM photo JOIN contain ON contain.picid=photo.picid WHERE contain.albumid = %s;", (albumid,))
+		cur.execute("SELECT photo.picid, photo.format FROM photo JOIN contain ON contain.picid=photo.picid WHERE contain.albumid = %s ORDER BY contain.sequencenum;", (albumid,))
 		results = cur.fetchall()
 		options['pictures']=results
 		options['albumid']=albumid
+		for picture in options['pictures']:
+			picture['route']='images/'+picture['picid']+'.'+picture['format']
 	elif request.method=='POST':
 		albumid=request.form['albumid']
 		if request.form['op']=="delete":
@@ -96,9 +98,11 @@ def album_route():
 	if request.method == 'GET':
 		albumid=request.args['albumid']
 		cur = db.cursor()
-		cur.execute("SELECT photo.picid, photo.format FROM photo JOIN contain ON contain.picid=photo.picid WHERE contain.albumid = %s;", (albumid,))
+		cur.execute("SELECT photo.picid, photo.format, contain.sequencenum FROM photo JOIN contain ON contain.picid=photo.picid WHERE contain.albumid = %s ORDER BY contain.sequencenum;", (albumid,))
 		results = cur.fetchall()
 		options['pictures']=results
 		options['albumid']=albumid
+		for picture in options['pictures']:
+			picture['route']='images/'+picture['picid']+'.'+picture['format']
 		
 	return render_template("album.html", **options)

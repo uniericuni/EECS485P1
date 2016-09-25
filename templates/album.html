@@ -16,6 +16,7 @@
 			<input type="hidden" name="albumid" value="{{albumid}}">
 			<input type="hidden" name="picid" value="{{picture.picid}}">
 			<p>{{picture.picid}}.{{picture.format}} <input type="submit" id="delete_pic_{{picture.picid}}" name="op" value="delete"></p>
+			<p><a href="{{url_for('pic.pic_route',picid=picture.picid)}}" id="pic_{{picture.picid}}_link"><img src="{{ url_for('static', filename = picture.route ) }}" height="200" mode="pad"></a></p>
 			</form>
 		{% endfor %}
 		<form action="{{url_for('album.album_edit_route')}}" enctype='multipart/form-data' method="POST">
@@ -26,7 +27,9 @@
 	{% else %}
 	Below are the list of pictures in this album
 		{% for picture in pictures%}
-			<p>{{picture.picid}}.{{picture.format}}</p>
-		{% endfor %}	
+		<p>{{picture.picid}}.{{picture.format}}</p>
+		<p><a href="{{url_for('pic.pic_route',picid=picture.picid)}}" id="pic_{{picture.picid}}_link"><img src="{{ url_for('static', filename = picture.route ) }}" height="200" mode="pad"></a></p>
+		{% endfor %}
+	<a href="{{url_for('album.album_edit_route',albumid=albumid)}}">edit this album</a>	
     {% endif %}
 {% endblock %}

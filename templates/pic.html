@@ -7,4 +7,15 @@
     <p class="important">
       Welcome!
     </p>
+    <p>{{picid}}.{{picture.format}}</p>
+    <p><img src="{{ url_for('static', filename = picture.route ) }}"></p>
+    
+    {% if prev_pic %}
+    <a id="prev_pic" href="{{url_for('pic.pic_route',picid=prev_picid)}}">previous picture</a>
+    {% endif %}
+    {% if next_pic %}
+    <a id="next_pic" href="{{url_for('pic.pic_route',picid=next_picid)}}">next picture</a>
+    {% endif %}
+    
+    <a id="parent_album" href="{{url_for('album.album_route',albumid=albumid)}}">go back to album</a>
 {% endblock %}
