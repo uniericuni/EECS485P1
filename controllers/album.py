@@ -73,7 +73,7 @@ def album_edit_route():
 				fname = filename[0:dotNum-1]
 				fformat = filename[dotNum+1:len(filename)]
 				htable.update(str(albumid))
-				htable.update(fname)
+				htable.update(filename)
 				picid = htable.hexdigest()
 				
 				#get proper sequence number for contain
