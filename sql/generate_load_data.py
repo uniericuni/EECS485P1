@@ -46,7 +46,7 @@ for file in os.listdir(directory):
 
     albumId = albumDict[album]
     htable.update(str(albumId))
-    htable.update(fname)
+    htable.update(file)
     picid = htable.hexdigest()
     oName = os.path.join(directory, file)
     nName = os.path.join(directory, picid+'.'+fformat)
