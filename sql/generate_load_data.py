@@ -27,31 +27,90 @@ albumId += 1
 # check files
 seqNum = 0
 directory = "./../static/images"
+album = 'I love sports'
+
 for file in os.listdir(directory):
     if file.startswith('.'):
         continue
-            
+    if not file.startswith('sports'):
+        continue
+
     htable = hashlib.md5()
     dotNum = file.find('.')
     fname = file[0:len(file)]
     fformat = file[dotNum+1:len(file)]
-    if fname.startswith('sports'):
-        album = 'I love sports'
-    elif fname.startswith('football'):
-        album = 'I love football'
-    elif fname.startswith('world'):
-        album = 'Around The World'
-    elif fname.startswith('space'):
-        album = 'Cool Space Shots'
-
     albumId = albumDict[album]
-    htable.update(str(albumId))
-    htable.update(file)
+    htable.update(str(albumId) + fname)
     picid = htable.hexdigest()
     oName = os.path.join(directory, file)
     nName = os.path.join(directory, picid+'.'+fformat)
     os.rename(oName, nName)
-        
+    output += ("""insert into photo values('""" + fformat + """', '""" + str(picid) + """', CURRENT_TIMESTAMP);\n""")
+    output += ('insert into contain values(' + str(seqNum) + ', ' + str(albumId) + """, '""" + str(picid) + """', '');\n""")
+
+    seqNum += 1
+
+album = 'I love football'
+for file in os.listdir(directory):
+    if file.startswith('.'):
+        continue
+    if not file.startswith('football'):
+        continue
+
+    htable = hashlib.md5()
+    dotNum = file.find('.')
+    fname = file[0:len(file)]
+    fformat = file[dotNum+1:len(file)]
+    albumId = albumDict[album]
+    htable.update(str(albumId) + fname)
+    picid = htable.hexdigest()
+    oName = os.path.join(directory, file)
+    nName = os.path.join(directory, picid+'.'+fformat)
+    os.rename(oName, nName)
+    output += ("""insert into photo values('""" + fformat + """', '""" + str(picid) + """', CURRENT_TIMESTAMP);\n""")
+    output += ('insert into contain values(' + str(seqNum) + ', ' + str(albumId) + """, '""" + str(picid) + """', '');\n""")
+
+    seqNum += 1
+
+album = 'Around The World'
+for file in os.listdir(directory):
+    if file.startswith('.'):
+        continue
+    if not file.startswith('world'):
+        continue
+
+    htable = hashlib.md5()
+    dotNum = file.find('.')
+    fname = file[0:len(file)]
+    fformat = file[dotNum+1:len(file)]
+    albumId = albumDict[album]
+    htable.update(str(albumId) + fname)
+    picid = htable.hexdigest()
+    oName = os.path.join(directory, file)
+    nName = os.path.join(directory, picid+'.'+fformat)
+    os.rename(oName, nName)
+    output += ("""insert into photo values('""" + fformat + """', '""" + str(picid) + """', CURRENT_TIMESTAMP);\n""")
+    output += ('insert into contain values(' + str(seqNum) + ', ' + str(albumId) + """, '""" + str(picid) + """', '');\n""")
+
+    seqNum += 1
+
+album = 'Cool Space Shots'
+for file in os.listdir(directory):
+    if file.startswith('.'):
+        continue
+    if not file.startswith('space'):
+        continue
+
+    htable = hashlib.md5()
+    dotNum = file.find('.')
+    fname = file[0:len(file)]
+    fformat = file[dotNum+1:len(file)]
+    albumId = albumDict[album]
+    htable.update(str(albumId) + fname)
+    picid = htable.hexdigest()
+    oName = os.path.join(directory, file)
+    nName = os.path.join(directory, picid+'.'+fformat)
+    os.rename(oName, nName)
     output += ("""insert into photo values('""" + fformat + """', '""" + str(picid) + """', CURRENT_TIMESTAMP);\n""")
     output += ('insert into contain values(' + str(seqNum) + ', ' + str(albumId) + """, '""" + str(picid) + """', '');\n""")
 
