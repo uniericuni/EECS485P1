@@ -12,13 +12,17 @@ def albums_edit_route():
 	}
 	cur = db.cursor()
 	if request.method=='GET':
+		if 'username' not in request.args:
+			abort(404)
+		cur.execute("SELECT username FROM user WHERE username = %s;",(username,))
+		if(len(cur.fetchall())==0):
+			abort(404)
 		username=request.args['username']		
 		cur.execute("SELECT title, albumid, created, lastupdated FROM album WHERE username = %s;", (username,))
 		results = cur.fetchall()
 		options['albums']=results
 		options['username']=username
 	elif request.method=='POST':
-	
 		username=request.form['username']
 		if request.form['op']=="delete":
 			albumid=request.form['albumid']
@@ -52,8 +56,13 @@ def albums_route():
 		"edit": False
 	}
 	if request.method == 'GET':
+		if 'username' not in request.args:
+			abort(404)
 		username=request.args['username']
 		cur = db.cursor()
+		cur.execute("SELECT username FROM user WHERE username = %s;",(username,))
+		if(len(cur.fetchall())==0):
+			abort(404)
 		cur.execute("SELECT title, albumid, created, lastupdated FROM album WHERE username = %s;", (username,))
 		results = cur.fetchall()
 		options['albums']=results

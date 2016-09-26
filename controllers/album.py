@@ -22,7 +22,13 @@ def album_edit_route():
 	}
 	cur = db.cursor()
 	if request.method == 'GET':
+		if 'albumid' not in request.args:
+			abort(404)
 		albumid=request.args['albumid']	
+		cur.execute("SELECT albumid FROM album WHERE albumid= %s;",(albumid,))
+		if(len(cur.fetchall())==0):
+			abort(404)	
+			
 		cur.execute("SELECT photo.picid, photo.format FROM photo JOIN contain ON contain.picid=photo.picid WHERE contain.albumid = %s ORDER BY contain.sequencenum;", (albumid,))
 		results = cur.fetchall()
 		options['pictures']=results
@@ -96,8 +102,14 @@ def album_route():
 		"edit": False
 	}
 	if request.method == 'GET':
+		if 'albumid' not in request.args:
+			abort(404)
 		albumid=request.args['albumid']
 		cur = db.cursor()
+		cur.execute("SELECT albumid FROM album WHERE albumid= %s;",(albumid,))
+		if(len(cur.fetchall())==0):
+			abort(404)		
+		
 		cur.execute("SELECT photo.picid, photo.format, contain.sequencenum FROM photo JOIN contain ON contain.picid=photo.picid WHERE contain.albumid = %s ORDER BY contain.sequencenum;", (albumid,))
 		results = cur.fetchall()
 		options['pictures']=results

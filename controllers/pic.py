@@ -9,8 +9,13 @@ def pic_route():
 		"prev_pic": False,
 		"next_pic": False
 	}
-	picid=request.args['picid']
+	if 'picid' not in request.args:
+		abort(404)
 	cur = db.cursor()
+	cur.execute("SELECT picid FROM photo WHERE picid = %s;",(picid,))
+	if(len(cur.fetchall())==0):
+		abort(404)
+	
 	cur.execute("SELECT photo.picid, photo.format, contain.albumid FROM photo JOIN contain ON contain.picid=photo.picid WHERE photo.picid = %s;", (picid,))
 	results = cur.fetchone()
 	options['picture']=results
