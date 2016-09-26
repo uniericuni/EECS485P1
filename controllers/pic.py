@@ -11,6 +11,7 @@ def pic_route():
 	}
 	if 'picid' not in request.args:
 		abort(404)
+	picid=request.args['picid']
 	cur = db.cursor()
 	cur.execute("SELECT picid FROM photo WHERE picid = %s;",(picid,))
 	if(len(cur.fetchall())==0):

@@ -14,10 +14,10 @@ def albums_edit_route():
 	if request.method=='GET':
 		if 'username' not in request.args:
 			abort(404)
+		username=request.args['username']
 		cur.execute("SELECT username FROM user WHERE username = %s;",(username,))
 		if(len(cur.fetchall())==0):
-			abort(404)
-		username=request.args['username']		
+			abort(404)	
 		cur.execute("SELECT title, albumid, created, lastupdated FROM album WHERE username = %s;", (username,))
 		results = cur.fetchall()
 		options['albums']=results
