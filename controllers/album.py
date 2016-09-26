@@ -13,8 +13,6 @@ album = Blueprint('album', __name__, template_folder='templates',url_prefix='/24
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
-
-
 @album.route('/album/edit',methods=['GET','POST'])
 def album_edit_route():
 	options = {
@@ -70,7 +68,7 @@ def album_edit_route():
 				#make hash
 				htable = hashlib.md5()
 				dotNum = filename.find('.')
-				fname = filename[0:dotNum-1]
+				fname = filename[0:len(filename)]
 				fformat = filename[dotNum+1:len(filename)]
 				htable.update(str(albumid))
 				htable.update(fname)

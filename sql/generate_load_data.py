@@ -26,14 +26,14 @@ albumId += 1
 
 # check files
 seqNum = 0
-htable = hashlib.md5()
 directory = "./../static/images"
 for file in os.listdir(directory):
     if file.startswith('.'):
         continue
-        
+            
+    htable = hashlib.md5()
     dotNum = file.find('.')
-    fname = file[0:dotNum-1]
+    fname = file[0:len(file)]
     fformat = file[dotNum+1:len(file)]
     if fname.startswith('sports'):
         album = 'I love sports'
